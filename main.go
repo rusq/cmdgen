@@ -22,7 +22,7 @@ func init() {
 	flag.StringVar(&rflg.Command, "cmd", os.Getenv("GEN_CMD"), "executable `name`, i.e. 'foo', if you will run it as './foo help'")
 	flag.StringVar(&rflg.CommandVariable, "var", os.Getenv("GEN_VAR"), "main command variable `name`, i.e. 'FooCommand', must be exported")
 	flag.StringVar(&rflg.Package, "pkg", os.Getenv("GEN_PKG"), "Command package name, i.e. 'github.com/you/yourpackage/cmd/slackdump'")
-	flag.BoolVar(&outflg.RunGoInit, "init", runGoInit, "run 'go init' in the output directory with the package name")
+	flag.BoolVar(&outflg.RunGoInit, "init", runGoInit, "run 'go init' in the output directory with the package name (not implemented)")
 }
 
 func main() {
