@@ -1,0 +1,6 @@
+deleteme
+*~
+.DS_Store
+trace.out
+.env
+.idea
