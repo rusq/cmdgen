@@ -121,3 +121,10 @@ Usage: foobar subcommand [flags]
    in the commands list.
 6. Run `go run ./cmd/foobar whambam` to see the error that we
    carefully planted there.
+
+## Go Stringer
+To generate string versions of status codes, run:
+```shell
+go install golang.org/x/tools/cmd/stringer@latest
+go generate ./...
+```
