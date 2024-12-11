@@ -36,7 +36,7 @@ Why would you not want to use this package?
 
 Install the command:
 ```shell
-go install github.com/rusq/cmdgen
+go install github.com/rusq/cmdgen@latest
 ```
 
 Run it:
