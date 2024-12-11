@@ -24,6 +24,11 @@ func generate(r renderer, out output) error {
 		return fmt.Errorf("failed to created output directory: %w", err)
 	}
 
+	fsys, err := fs.Sub(fsys, "template")
+	if err != nil {
+		return fmt.Errorf("failed to get sub filesystem: %w", err)
+	}
+
 	return fs.WalkDir(fsys, ".", func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
 			return err

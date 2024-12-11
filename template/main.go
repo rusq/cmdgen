@@ -12,12 +12,16 @@ import (
 	"strings"
 
 	"github.com/rusq/cmdgen/template/internal/cfg"
+	"github.com/rusq/cmdgen/template/internal/dosomething"
 	"github.com/rusq/cmdgen/template/internal/golang/base"
 	"github.com/rusq/cmdgen/template/internal/golang/help"
 )
 
 func init() {
-	base.MAIN__COMMAND.Commands = []*base.Command{}
+	base.MAIN__COMMAND.Commands = []*base.Command{
+		// Add commands here.
+		dosomething.CmdDoSomething, // remove this sample command, or update it to suit your needs.
+	}
 }
 
 func main() {
