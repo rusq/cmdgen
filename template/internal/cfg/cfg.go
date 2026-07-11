@@ -42,4 +42,6 @@ func SetBaseFlags(fs *flag.FlagSet, mask FlagMask) {
 	if mask&OmitSomeOtherFlag == 0 {
 		fs.StringVar(&SomeOtherFlag, "some-other-flag", "", "some other flag sets something else")
 	}
+
+	setDevFlags(fs, mask)
 }

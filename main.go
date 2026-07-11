@@ -102,8 +102,8 @@ func loadDotEnv() error {
 		if strings.HasPrefix(line, "#") {
 			continue
 		}
-		if strings.HasPrefix(line, "export") {
-			line = strings.TrimSpace(strings.TrimPrefix(line, "export"))
+		if after, ok := strings.CutPrefix(line, "export"); ok {
+			line = strings.TrimSpace(after)
 		}
 		name, value, found := strings.Cut(line, "=")
 		if !found {
