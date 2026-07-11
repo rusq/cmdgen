@@ -66,10 +66,10 @@ func (r *renderer) validate() error {
 		return errors.New("command variable cannot be empty")
 	}
 	if r.CommandVariable[0] < 'A' || r.CommandVariable[0] > 'Z' {
-		if r.CommandVariable[0] < 'a' || r.CommandVariable[0] > 'z' {
-			r.CommandVariable = strings.ToTitle(r.CommandVariable)
+		if 'a' <= r.CommandVariable[0] && r.CommandVariable[0] <= 'z' {
+			r.CommandVariable = strings.ToUpper(r.CommandVariable[:1]) + r.CommandVariable[1:]
 		} else {
-			return errors.New("command variable must start with an uppercase letter")
+			return errors.New("command variable must start with a letter")
 		}
 	}
 	if r.Package == "" {
@@ -99,7 +99,7 @@ func loadDotEnv() error {
 	for s.Scan() && lineno < maxlines {
 		lineno++
 		line := strings.TrimSpace(s.Text())
-		if strings.HasPrefix(line, "#") {
+		if line == "" || strings.HasPrefix(line, "#") {
 			continue
 		}
 		if after, ok := strings.CutPrefix(line, "export"); ok {

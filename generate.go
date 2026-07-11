@@ -21,7 +21,7 @@ func generate(r renderer, out output) error {
 	}
 
 	if err := os.MkdirAll(out.OutputDir, 0755); err != nil {
-		return fmt.Errorf("failed to created output directory: %w", err)
+		return fmt.Errorf("failed to create output directory: %w", err)
 	}
 
 	fsys, err := fs.Sub(fsys, "template")

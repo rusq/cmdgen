@@ -121,8 +121,7 @@ func invoke(cmd *base.Command, args []string) error {
 	if lg, err := initLog(cfg.LogFile, cfg.JsonHandler, cfg.Verbose); err != nil {
 		return err
 	} else {
-		lg.With("command", cmd.Name())
-		cfg.Log = lg
+		cfg.Log = lg.With("command", cmd.Name())
 	}
 
 	trace.Log(ctx, "command", fmt.Sprint("Running ", cmd.Name(), " command"))
@@ -172,12 +171,10 @@ func initTrace(filename string) (stop func()) {
 	return
 }
 
-// initLog initialises the logging and returns the context with the Logger. If the
-// filename is not empty, the file will be opened, and the logger output will
-// be switch to that file. Returns the initialised logger, stop function and
-// an error, if any. The stop function must be called in the deferred call, it
-// will close the log file, if it is open. If the error is returned the stop
-// function is nil.
+// initLog initialises the logging. If the filename is not empty, the file
+// will be opened, and the logger output will be switched to that file.
+// Returns the initialised logger and an error, if any.  If a log file is
+// opened, a function to close it is registered with base.AtExit.
 func initLog(filename string, jsonHandler bool, verbose bool) (*slog.Logger, error) {
 	if verbose {
 		slog.SetLogLoggerLevel(slog.LevelDebug)
